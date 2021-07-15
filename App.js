@@ -13,10 +13,9 @@ import { AppPermission } from './components/AppPermission';
 const Tab = createMaterialTopTabNavigator();
 
 function App () {
-  useEffect(async ()=>{
-    await AppPermission()
-  },[]) 
-  
+    useEffect(async ()=>{
+      await AppPermission()
+    },[]) 
 
     const scrollA = useRef(new Animated.Value(0)).current;
     return (
@@ -81,9 +80,7 @@ function App () {
           </Tab.Navigator>
         </NavigationContainer>
       </Animated.ScrollView>
-    );
-  
-  
+    ); 
 };
 
 export default App
