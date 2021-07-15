@@ -3,9 +3,11 @@ import { openweathermap_api_key } from '../../config.json';
 import axios from 'axios'
 
 export const getLocation = (latitude, longitude, onSuccess = () => {}, onError = () => {}) => {
+  console.log('nipuni')
+  console.log(latitude)
   return async dispatch => {
     try {
-      const res = await fetch(`api.openweathermap.org/data/2.5/weather?lat={latitude}&lon={longitude}&appid={openweathermap_api_key}`);
+      const res = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${openweathermap_api_key}`);
 
       if (!res.ok) {
         const resData = await res.json();

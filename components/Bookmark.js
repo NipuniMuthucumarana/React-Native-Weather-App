@@ -21,7 +21,6 @@ const Bookmark = ({navigation}) => {
   const scrollA = useRef(new Animated.Value(0)).current;
   const ITEM_Size = 300;
   const dispatch = useDispatch();
-  //const { data, error } = useSelector(state => state.weather);
   
   useEffect(() => {
     navigation.addListener('focus', () => {
@@ -83,18 +82,6 @@ const Bookmark = ({navigation}) => {
   );
 };
 
-const mapStateToProps = state => {
-  return {
-      data: state.weather
-  }
-}
-
-const mapDispatchToProps = dispatch => {
-  return {
-      data: () => dispatch(getWeather(item.City, () => setLoading(false), () => setLoading(false)))
-  }
-}
-
 const styles = StyleSheet.create({
   title: {
     fontSize: 24,
@@ -123,7 +110,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default connect(
-  mapStateToProps, 
-  mapDispatchToProps
-)(Bookmark)
+export default Bookmark

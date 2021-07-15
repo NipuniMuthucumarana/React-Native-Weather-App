@@ -10,7 +10,6 @@ import {
   TouchableOpacity, 
   ToastAndroid } from 'react-native';
 
-import { useDispatch, useSelector } from 'react-redux';
 import SunIcon from '../assets/sun.svg';
 import CloudIcon from '../assets/cloudy.svg';
 import RainIcon from '../assets/rain.svg';
@@ -18,7 +17,6 @@ import Bookmark from './Bookmark';
 
 const WeatherData = ({ data }) => {
   const {width: windowWidth, height: windowHeight} = useWindowDimensions();
-  //const dispatch = useDispatch();
   // const fahrenheit = (data.main.temp * 1.8 - 459.67).toFixed(2);
   const celsius = (data.main.temp - 273.15).toFixed(2)+'\u2103';
 

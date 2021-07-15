@@ -4,16 +4,20 @@ import {
     Text, 
     StyleSheet, 
     TextInput, 
-    Button 
+    Button,
+    Pressable, 
 } from 'react-native';
 
-const Form = ({ search, onSetSearch, onSubmit }) => {
+const Form = ({ search, onSetSearch, onSubmit, getCurrentWeatherData }) => {
   return (
     <View style={styles.container}>
       <Text style={styles.heading}>Enter city name and press search button</Text>
       <View>
         <TextInput style={styles.input} placeholder="Enter city name..." value={search} onChangeText={(val) => onSetSearch(val)} />
-        <Button title="Search" onPress={onSubmit} />
+        <Button style={styles.button} title="Search" onPress={onSubmit} />
+        <View style={{marginTop:10}}>
+          <Button title="View your location weather Info" onPress={getCurrentWeatherData} />
+        </View>       
       </View>
     </View>
   );
@@ -42,6 +46,18 @@ const styles = StyleSheet.create({
     fontSize: 16,
     marginBottom: 10,
   },
+  button: {
+    padding: 20,
+    width: 330,
+    height: 20,
+    backgroundColor: '#0080ff'
+  },
+  text: {
+    fontSize: 18,
+    opacity: 0.7,
+    marginLeft: 20,
+    marginBottom: 20,
+  }
 });
 
 export default Form;
