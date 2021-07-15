@@ -8,13 +8,18 @@ import FontAwesome5 from 'react-native-vector-icons/FontAwesome5'
 import Home from './components/Home';
 import Home2 from './components/Home2';
 import Bookmark from './components/Bookmark';
-import { AppPermission } from './components/AppPermission';
+import { AppPermission,  } from './components/AppPermission';
+import { Permission, PERMISSION_TYPE  } from './components/AppPermission';
 
 const Tab = createMaterialTopTabNavigator();
 
 function App () {
+    // useEffect(async ()=>{
+    //   await AppPermission()
+    // },[]) 
+
     useEffect(async ()=>{
-      await AppPermission()
+      await Permission.checkPermission(PERMISSION_TYPE.location)
     },[]) 
 
     const scrollA = useRef(new Animated.Value(0)).current;

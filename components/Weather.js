@@ -9,9 +9,13 @@ import {
     TouchableOpacity,
     Image,
     TextInput,
-    Button,} from 'react-native';
+    Button,
+    ToastAndroid,
+    Toast,
+    Alert} from 'react-native';
 
 import WeatherData from './WeatherData';
+import { Permission, PERMISSION_TYPE  } from './AppPermission';
 
 
 const Weather = ({ loading, data, error }) => {
@@ -19,6 +23,12 @@ const Weather = ({ loading, data, error }) => {
 
 
   if (error) {
+    if(error == 'wrong latitude'){
+      error = 'Permission Denied to access your current location'
+      Permission.checkPermission(PERMISSION_TYPE.location)
+      //ToastAndroid.show('Location permission denied !');
+      //return Alert.alert('Validation', 'City name is required!', [{ text: 'OK' }]);
+    } 
     return <View style={styles.container}>
       <Text style={styles.error}>{error}</Text>
     </View>;
@@ -46,6 +56,7 @@ const Weather = ({ loading, data, error }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    //margin: 15,
     //paddingVertical: 20,
   },
   error: {

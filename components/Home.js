@@ -21,8 +21,8 @@ function Home() {
   const [loading, setLoading] = useState(false);
   const [current, setCurrent] = useState(true);
   const [refreshing, setRefreshing] = useState(false);
-  const [latitude, setLatitude] = useState(0);
-  const [longitude, setLongitude] = useState(0);
+  const [latitude, setLatitude] = useState();
+  const [longitude, setLongitude] = useState();
   const dispatch = useDispatch();
   const { data, error } = useSelector(state => state.weather);
   const { locationData, locationError } = useSelector(state => state.location);
@@ -51,7 +51,6 @@ function Home() {
     setCurrent(false)
     setLoading(true);
     dispatch(getWeather(search, () => setLoading(false), () => setLoading(false)));
-    //props.getData;
     setSearch('');
     Keyboard.dismiss();  
   };
